@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Guessing Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main class="page-shell">
+    <section class="game-card" aria-labelledby="game-title">
+      <div class="eyebrow">Number guessing game</div>
+      <h1 id="game-title">Guess a number</h1>
+      <p class="intro">
+        Try to find the hidden number between 1 and 100.
+        You have 10 attempts, so make each guess count.
+      </p>
+
+      <form class="guess-form" id="guess-form" autocomplete="off" novalidate>
+        <label class="sr-only" for="guess-input">Enter your guess</label>
+        <input id="guess-input" name="guess" type="number" min="1" max="100" inputmode="numeric"
+          placeholder="Type a number" aria-describedby="feedback attempts-text previous-guesses">
+        <button type="submit" id="submit">Submit guess</button>
+      </form>
+
+      <div class="status-panel" aria-live="polite">
+        <p id="feedback" class="feedback">Start with any number from 1 to 100.</p>
+        <div class="stats">
+          <p>Previous guesses: <span id="previous-guesses"></span></p>
+          <p>Guesses remaining: <span id="attempts-text">10</span></p>
+          <p id="hint"></p>
+        </div>
+      </div>
+      <button class="reset-button" id="new-game" type="button">Start new round</button>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
