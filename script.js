@@ -30,7 +30,7 @@ if (playGame) {
 // initialize attempts display
 // remainingAttempts.innerHTML = `${11 - numOfAttempts}`
 
-function validateGuess(guess) { // validates the inputs lie b/w 1 to 100 & number of attempts
+function validateGuess(guess) { // fn1: validates the inputs lie b/w 1 to 100 & number of attempts
   if (isNaN(guess)) {
     alert('Please enter a valid number!')
   } else if (guess < 1) {
@@ -50,7 +50,7 @@ function validateGuess(guess) { // validates the inputs lie b/w 1 to 100 & numbe
   }
 }
 
-function compareGuess(guess) { // compares the input with the random number, tells equal, low or high
+function compareGuess(guess) { // fn2: compares the input with the random number, tells equal, low or high
   if (guess === randomNumber) {
     displayMessage(`You guessed it right! YOU WONNNN!!!`)
     userInput.setAttribute('disabled', '')
@@ -61,25 +61,25 @@ function compareGuess(guess) { // compares the input with the random number, tel
   }
 }
 
-function displayGuesses(guess) { // cleans the input, updates the status panel
+function displayGuesses(guess) { // fn3: cleans the input, updates the status panel
   userInput.value = ''
   prevGuesses.innerText += `${guess}, `
   numOfAttempts++
   remainingAttempts.innerHTML = `${11 - numOfAttempts}`
 }
 
-function displayMessage(message) { // passes a message, i.e., low or high
+function displayMessage(message) { // fn4: passes a message, i.e., low or high
   hint.innerHTML = `<h2>${message}</h2>`
 }
 
-function endGame() { // ends the game when guesses are over
+function endGame() { // fn5: ends the game when guesses are over
   userInput.value = ''
   userInput.setAttribute('disabled', '')
   playGame = false
   StartNewGame()
 }
 
-function StartNewGame() { // starts a new game
+function StartNewGame() { // fn6: starts a new game
   const newGameBtn = document.querySelector('#new-game')
   newGameBtn.addEventListener('click', function (e) {
     randomNumber = generateRandomNonMultipleOf5()
