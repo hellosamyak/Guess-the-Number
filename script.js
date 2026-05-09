@@ -1,10 +1,18 @@
-let randomNumber = parseInt(Math.random() * 100 + 1)
+function generateRandomNonMultipleOf5() {
+  let n;
+  do {
+    n = Math.floor(Math.random() * 100) + 1
+  } while (n % 5 === 0)
+  return n
+}
 
-const submit = document.querySelector('#submit')
-const userInput = document.querySelector('#guess-input')
-const prevGuesses = document.querySelector('#previous-guesses')
-const remainingAttempts = document.querySelector('#attempts-text')
-const hint = document.querySelector('#hint')
+let randomNumber = generateRandomNonMultipleOf5()
+
+const submit = document.querySelector('#submit') // submit button
+const userInput = document.querySelector('#guess-input') // input placeholder
+const prevGuesses = document.querySelector('#previous-guesses') // displays previous guesses made by the user
+const remainingAttempts = document.querySelector('#attempts-text') // remaining attempts out of 10
+const hint = document.querySelector('#hint') // low or high
 
 let userGuesses = []
 let numOfAttempts = 1
@@ -20,7 +28,7 @@ if (playGame) {
 }
 
 // initialize attempts display
-remainingAttempts.innerHTML = `${11 - numOfAttempts}`
+// remainingAttempts.innerHTML = `${11 - numOfAttempts}`
 
 function validateGuess(guess) { // validates the inputs lie b/w 1 to 100 & number of attempts
   if (isNaN(guess)) {
@@ -74,7 +82,7 @@ function endGame() { // ends the game when guesses are over
 function StartNewGame() { // starts a new game
   const newGameBtn = document.querySelector('#new-game')
   newGameBtn.addEventListener('click', function (e) {
-    randomNumber = parseInt(Math.random() * 100 + 1)
+    randomNumber = generateRandomNonMultipleOf5()
     userGuesses = []
     numOfAttempts = 1
     prevGuesses.innerHTML = ''
